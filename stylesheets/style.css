@@ -22,8 +22,6 @@ main {
       flex-direction: column;
       gap: 30px;
       align-items: center;
-      border: 1px solid black;
-      padding: 2.5rem 2rem;
 
       li {
         h1 {
@@ -127,7 +125,6 @@ main {
       color: white;
       font-weight: 500;
       font-size: var(--font-size-heading-m);
-      border: 1px solid white;
       padding: 20px;
     }
 

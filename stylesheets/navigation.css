@@ -6,7 +6,6 @@ header {
   height: 10vh;
   background-color: white;
   display: flex;
-  border-bottom: 1px solid black;
 
   ul {
     padding: 0 30px;
