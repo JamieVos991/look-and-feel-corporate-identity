@@ -32,7 +32,7 @@ body {
     --border-none: none;
 
     /* Typographie */
-    --font-weight-standard: 400;
+    --font-weight-standard: 500;
     --font-weight-heading: 700;
     --font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
       sans-serif;
@@ -291,7 +291,7 @@ a {
   border: var(--border-none);
   border-radius: var(--border-radius);
   font-family: var(--font-family);
-  color: var(--primary-lighter-color);
+  color: var(--white-color);
   cursor: pointer;
   text-decoration: none;
 }

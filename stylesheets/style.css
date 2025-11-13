@@ -13,8 +13,11 @@ main {
     height: 100vh;
     align-items: center;
     display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-direction: column;
 
-    ul {
+    ul:nth-of-type(1) {
       display: flex;
       flex-direction: column;
       gap: 30px;
@@ -23,7 +26,7 @@ main {
       li {
         h1 {
           display: flex;
-          font-weight: 500;
+          font-weight: var(--font-weight-standard);
           flex-direction: column;
           line-height: var(--line-height-heading);
 
@@ -47,5 +50,58 @@ main {
         }
       }
     }
+
+    .auto-scroll {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      padding: 30px 0;
+      display: flex;
+      height: 200px !important;
+
+      &::before,
+      &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        width: 100px;
+        height: 100%;
+        z-index: 2;
+        pointer-events: none;
+      }
+
+      &::after {
+        right: 0;
+        background: linear-gradient(to left, white 0%, transparent 100%);
+      }
+
+      &::before {
+        left: 0;
+        background: linear-gradient(to right, white 0%, transparent 100%);
+      }
+
+      .scroll-baan {
+        display: flex;
+        gap: 70px;
+        animation: scroll 30s linear infinite;
+        width: max-content;
+        align-items: center;
+      }
+
+      .scroll-baan img {
+        max-height: 80px;
+        filter: grayscale(1);
+        object-fit: cover;
+      }
+    }
+  }
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
   }
 }
