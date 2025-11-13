@@ -15,6 +15,14 @@ header {
     align-items: center;
 
     li {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+
+      .light-dark__btn {
+        display: flex;
+      }
+
       a {
         color: white;
         font-size: 0.9rem;
