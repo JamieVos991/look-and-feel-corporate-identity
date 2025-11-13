@@ -44,6 +44,20 @@ main {
         }
 
         a {
+          display: inline-flex;
+          align-items: center;
+          gap: 5px;
+          padding: var(--button-size);
+          letter-spacing: var(--letter-spacing);
+          text-transform: var(--text-uppercase);
+          background-color: var(--primary-color);
+          border: var(--border-none);
+          border-radius: var(--border-radius);
+          font-family: var(--font-family);
+          color: var(--white-color);
+          cursor: pointer;
+          text-decoration: none;
+
           p {
             transform: translateY(2px);
           }

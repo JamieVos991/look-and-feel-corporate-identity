@@ -253,7 +253,7 @@ input[type="range"]::-webkit-slider-thumb {
 
 /* Meer nieuws button */
 button {
-  padding: var(--button-size);
+  /* padding: var(--button-size);
   letter-spacing: var(--letter-spacing);
   text-transform: var(--text-uppercase);
   background-color: var(--primary-color);
@@ -264,34 +264,20 @@ button {
   display: flex;
   align-items: center;
   cursor: pointer;
-  gap: 5px;
+  gap: 5px; */
+
+  border: none;
 
   &:active {
     border: 1px solid var(--primary-color);
   }
 
-  &:hover {
+  /* &:hover {
     background: var(--primary-lighter-color);
     color: var(--primary-color);
-  }
+  } */
 
   span {
     transform: translateY(3px);
   }
-}
-
-a {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  padding: var(--button-size);
-  letter-spacing: var(--letter-spacing);
-  text-transform: var(--text-uppercase);
-  background-color: var(--primary-color);
-  border: var(--border-none);
-  border-radius: var(--border-radius);
-  font-family: var(--font-family);
-  color: var(--white-color);
-  cursor: pointer;
-  text-decoration: none;
 }
