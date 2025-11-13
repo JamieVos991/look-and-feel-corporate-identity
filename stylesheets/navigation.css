@@ -3,9 +3,10 @@ body.no-scroll {
 }
 
 header {
-  height: 5rem;
+  height: 10vh;
   background-color: white;
   display: flex;
+  border-bottom: 1px solid black;
 
   ul {
     padding: 0 30px;
@@ -19,6 +20,10 @@ header {
         color: white;
         font-size: 0.9rem;
         text-decoration: none;
+      }
+
+      img {
+        height: 40px;
       }
 
       button {
@@ -49,7 +54,7 @@ header {
     button {
       svg {
         rotate: 45deg;
-        right: 20px;
+        right: 30px;
         top: 20px;
         z-index: 10;
         cursor: pointer;
