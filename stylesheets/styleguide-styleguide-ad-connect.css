@@ -1,0 +1,297 @@
+/* We gebruiken hier Cascade layers, wat mogelijke problemen met Specificiteit voorkomt
+   https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics/Cascade_layers
+   https://css-tricks.com/css-cascade-layers/ */
+
+body {
+  font-family: var(--font-family);
+
+  label,
+  button {
+    font-family: var(--font-family);
+  }
+}
+
+@layer styleguide {
+  :root {
+    /* Colors */
+    --primary-color: #005f61;
+    --primary-lighter-color: #adebec;
+    --accent-color: #a8005d;
+    --accent-lighter-color: #fcd6e6;
+    --white-color: #fdfdfd;
+    --black-color: #353434;
+    --background-input-color: #ececec;
+
+    /* Line height */
+    --line-height-heading: 1.2;
+    --line-height-text: 1.4;
+
+    /* Button */
+    --button-size: 10px 25px;
+    --border-radius: 5px;
+    --border-none: none;
+
+    /* Typographie */
+    --font-weight-standard: 400;
+    --font-weight-heading: 700;
+    --font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+      sans-serif;
+
+    --font-size-button: 0.9rem;
+
+    --font-size-s: 1rem;
+    --font-size-m: 1.12rem;
+    --font-size-l: 1.25rem;
+
+    --font-size-heading-xs: 1.3rem;
+    --font-size-heading-s: 1.5rem;
+    --font-size-heading-m: 2rem;
+    --font-size-heading-l: 2.5rem;
+
+    --letter-spacing: 2px;
+    --text-uppercase: uppercase;
+  }
+
+  /* Color classes */
+  .primary-color {
+    background: var(--primary-color);
+  }
+
+  .primary-lighter-color {
+    background: var(--primary-lighter-color);
+  }
+
+  .accent-color {
+    background: var(--accent-color);
+  }
+
+  .accent-lighter-color {
+    background: var(--accent-lighter-color);
+  }
+
+  .white-color {
+    background: var(--white-color);
+    border: 1px solid black;
+  }
+
+  .black-color {
+    background: var(--black-color);
+  }
+
+  .background-input-color {
+    background-color: var(--background-input-color);
+  }
+
+  /* Font classes */
+  .font-size-heading-l {
+    font-size: var(--font-size-heading-l);
+  }
+
+  .font-size-heading-m {
+    font-size: var(--font-size-heading-m);
+  }
+
+  .font-size-heading-s {
+    font-size: var(--font-size-heading-s);
+  }
+
+  .font-size-heading-xs {
+    font-size: var(--font-size-heading-xs);
+  }
+
+  .font-size-l {
+    font-size: var(--font-size-l);
+  }
+
+  .font-size-m {
+    font-size: var(--font-size-m);
+  }
+
+  .font-size-s {
+    font-size: var(--font-size-s);
+  }
+
+  .font-size-button {
+    font-size: var(--font-size-button);
+  }
+}
+
+/* ul en evt ol */
+ul {
+  list-style-type: none;
+  padding-left: 0;
+
+  li {
+    /* display: flex;
+    align-items: center;
+    gap: 5px; */
+
+    p {
+      /* font-size: var(--font-size-button); */
+      margin: 0;
+    }
+  }
+}
+
+/* Table */
+table {
+  border-spacing: 0;
+  width: 100%;
+  font-family: var(--font-family);
+  border: 1px solid var(--primary-color);
+
+  thead {
+    background: var(--primary-color);
+    color: var(--white-color);
+
+    tr {
+      text-align: left;
+
+      th {
+        padding: 0 10px;
+        height: 30px;
+        font-weight: 600;
+      }
+    }
+  }
+
+  tr:nth-of-type(even) {
+    background-color: var(--background-input-color);
+  }
+
+  tbody {
+    padding: 0 10px;
+
+    tr {
+      td {
+        padding: 0 10px;
+        height: 30px;
+      }
+    }
+  }
+}
+
+/* Blockquote */
+blockquote {
+  background: var(--background-input-color);
+  border-radius: var(--border-radius);
+
+  p {
+    padding: 5px 0px;
+    font-style: italic;
+    color: #969696;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-family);
+    gap: 10px;
+    font-size: var(--font-size-m);
+
+    span {
+      font-size: 200%;
+      font-family: cursive;
+    }
+  }
+}
+
+/* Form label */
+label {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-size: var(--font-size-s);
+}
+
+/* Form input & textarea */
+input,
+textarea {
+  accent-color: var(--primary-color);
+  border-radius: var(--border-radius);
+  font-size: var(--font-size-heading-s);
+  background: var(--background-input-color);
+  outline: none;
+  font-size: var(--font-size-s);
+  padding: 3px 5px;
+  border: none;
+  border-bottom: 1px solid var(--primary-color);
+
+  &:focus {
+    border: 1px solid var(--primary-color);
+    outline: none;
+    border-radius: var(--border-radius);
+  }
+
+  /* Form sumbit button */
+  &[type="submit"] {
+    padding: var(--button-size);
+    letter-spacing: var(--letter-spacing);
+    text-transform: var(--text-uppercase);
+    background-color: var(--accent-color);
+    border: var(--border-none);
+    border-radius: var(--border-radius);
+    font-size: var(--font-size-button);
+    font-family: var(--font-family);
+    color: var(--accent-lighter-color);
+    cursor: pointer;
+
+    &:active {
+      border: 1px solid var(--accent-color);
+    }
+
+    &:hover {
+      background: var(--accent-lighter-color);
+      color: var(--accent-color);
+    }
+  }
+}
+
+/* Range input waarvan de thumb wordt veranderd */
+input[type="range"]::-webkit-slider-thumb {
+  border-radius: 50%;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Meer nieuws button */
+button {
+  padding: var(--button-size);
+  letter-spacing: var(--letter-spacing);
+  text-transform: var(--text-uppercase);
+  background-color: var(--primary-color);
+  border: var(--border-none);
+  border-radius: var(--border-radius);
+  font-family: var(--font-family);
+  color: var(--primary-lighter-color);
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  gap: 5px;
+
+  &:active {
+    border: 1px solid var(--primary-color);
+  }
+
+  &:hover {
+    background: var(--primary-lighter-color);
+    color: var(--primary-color);
+  }
+
+  span {
+    transform: translateY(3px);
+  }
+}
+
+a {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: var(--button-size);
+  letter-spacing: var(--letter-spacing);
+  text-transform: var(--text-uppercase);
+  background-color: var(--primary-color);
+  border: var(--border-none);
+  border-radius: var(--border-radius);
+  font-family: var(--font-family);
+  color: var(--primary-lighter-color);
+  cursor: pointer;
+  text-decoration: none;
+}
