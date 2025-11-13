@@ -26,6 +26,14 @@ main {
           font-weight: 500;
           flex-direction: column;
           line-height: var(--line-height-heading);
+
+          span {
+            background: var(--primary-color);
+            border-radius: var(--border-radius);
+            color: var(--white-color);
+            padding: 10px 10px 5px 10px;
+            color: white;
+          }
         }
 
         p {
@@ -39,13 +47,5 @@ main {
         }
       }
     }
-  }
-
-  span {
-    background: var(--primary-color);
-    border-radius: var(--border-radius);
-    color: var(--white-color);
-    padding: 10px 10px 5px 10px;
-    color: white;
   }
 }

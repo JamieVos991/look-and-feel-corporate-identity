@@ -12,7 +12,7 @@
   </head>
   <body>
     <main>
-      <section>
+      <section class="intro">
         <ul>
           <li>
             <h1 class="font-size-heading-l">
@@ -27,7 +27,7 @@
             </p>
           </li>
           <li>
-            <a href=""
+            <a href="#"
               ><p class="font-size-button">Lees meer</p>
               <svg
                 width="20"
@@ -46,5 +46,46 @@
         </ul>
       </section>
     </main>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script>
+      gsap.from(".intro h1", {
+        opacity: 0,
+        y: 50,
+        duration: 1,
+        ease: "power3.out",
+      });
+
+      gsap.from(".intro p", {
+        opacity: 0,
+        y: 50,
+        duration: 1,
+        delay: 0.2,
+        ease: "power3.out",
+      });
+
+      gsap.from(".intro a", {
+        opacity: 0,
+        y: 50,
+        duration: 1,
+        delay: 0.4,
+        ease: "power3.out",
+      });
+
+      gsap.from(".intro .scroll-p", {
+        opacity: 0,
+        y: 50,
+        duration: 1,
+        delay: 0.6,
+        ease: "power3.out",
+      });
+
+      gsap.from(".intro .scroll-track", {
+        opacity: 0,
+        y: 50,
+        duration: 1,
+        delay: 0.8,
+        ease: "power3.out",
+      });
+    </script>
   </body>
 </html>
