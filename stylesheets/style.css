@@ -188,7 +188,7 @@ main {
         }
 
         a {
-          color: var(--primary-lighter-color);
+          color: var(--primary-color);
         }
 
         p {
