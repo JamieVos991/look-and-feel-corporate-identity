@@ -40,6 +40,11 @@ main {
             color: var(--white-color);
             font-family: none;
             padding: 5px 10px;
+
+            p {
+              line-height: 1.3;
+              transform: translateY(-2px);
+            }
           }
         }
 
@@ -238,8 +243,118 @@ main {
     }
   }
   section:nth-of-type(4) {
-    height: 100vh;
+    min-height: 100vh;
     background: var(--primary-color);
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+
+    ul:nth-of-type(1) {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+
+      li {
+        h2 {
+          color: var(--white-color);
+          font-weight: 500;
+          font-size: clamp(2rem, 2.5vw, 4rem);
+        }
+
+        a {
+          color: var(--primary-lighter-color);
+        }
+
+        p {
+          color: var(--white-color);
+          line-height: var(--line-height-text);
+        }
+      }
+    }
+
+    ul:nth-of-type(2) {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+
+      li {
+        cursor: pointer;
+
+        article {
+          div {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+            flex-wrap: wrap;
+
+            a {
+              height: 50px;
+              width: 50px;
+              background-color: var(--primary-color);
+              border-radius: 50%;
+              display: grid;
+              place-content: center;
+              border-radius: 50%;
+
+              svg {
+                color: white;
+              }
+            }
+
+            p:nth-of-type(2) {
+              font-size: 1rem;
+            }
+          }
+        }
+
+        &:nth-of-type(1) {
+          article {
+            &:hover {
+              color: white;
+              background-image: url(../assets/images/article-1.jpg);
+              background-position: center;
+              background-size: cover;
+              transition: 0.2s;
+            }
+          }
+        }
+
+        &:nth-of-type(2) {
+          article {
+            &:hover {
+              background-image: url(../assets/images/article-3.png);
+              background-position: center;
+              background-size: cover;
+              transition: 0.2s;
+            }
+          }
+        }
+
+        &:nth-of-type(3) {
+          article {
+            &:hover {
+              background-image: url(../assets/images/article-2.jpg);
+              background-position: center;
+              background-size: cover;
+              transition: 0.2s;
+            }
+          }
+        }
+
+        article {
+          background-color: white;
+          width: 100%;
+          height: 200px;
+          padding: 20px;
+
+          p {
+            font-weight: var(--font-weight-heading);
+            font-size: 2rem;
+          }
+        }
+      }
+    }
   }
 }
 
