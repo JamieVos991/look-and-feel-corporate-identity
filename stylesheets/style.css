@@ -11,6 +11,10 @@ button {
 }
 
 main {
+  p,
+  h2 {
+    max-width: 40rem;
+  }
   section:nth-of-type(1) {
     padding: 1.5rem 1.5rem 5rem 1.5rem;
     text-align: center;
@@ -250,10 +254,21 @@ main {
     flex-direction: column;
     gap: 40px;
 
+    @media (min-width: 1000px) {
+      min-height: 100vh;
+      display: grid;
+      grid-template-rows: auto 1fr;
+      gap: 40px;
+    }
+
     ul:nth-of-type(1) {
       display: flex;
       flex-direction: column;
       gap: 15px;
+
+      @media (min-width: 1000px) {
+        grid-column: 1 / -1;
+      }
 
       li {
         h2 {
@@ -278,8 +293,19 @@ main {
       flex-direction: column;
       gap: 20px;
 
+      @media (min-width: 1000px) {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 40vh;
+        gap: 10px;
+      }
+
       li {
         cursor: pointer;
+
+        @media (min-width: 1000px) {
+          height: 100%;
+        }
 
         article {
           div {
