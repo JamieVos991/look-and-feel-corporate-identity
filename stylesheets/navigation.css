@@ -3,13 +3,14 @@ body.no-scroll {
 }
 
 header {
-  height: 10lvh;
-  background-color: white;
   display: flex;
+  display: none;
 
   ul {
     padding: 0 30px;
     display: flex;
+    height: 65px;
+    position: fixed;
     width: 100%;
     justify-content: space-between;
     align-items: center;

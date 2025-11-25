@@ -1,12 +1,16 @@
 /* We gebruiken hier Cascade layers, wat mogelijke problemen met Specificiteit voorkomt
    https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics/Cascade_layers
-   https://css-tricks.com/css-cascade-layers/ */
+   https://css-tricks.com/css-cascade-layers/ 
+   */
 
 body {
   font-family: var(--font-family);
 
   label,
-  button {
+  table,
+  input,
+  button,
+  blockquote p {
     font-family: var(--font-family);
   }
 }
@@ -14,30 +18,28 @@ body {
 @layer styleguide {
   :root {
     /* Colors */
-    --primary-color: #005f61;
-    --primary-lighter-color: #adebec;
-    --accent-color: #a8005d;
-    --accent-lighter-color: #fcd6e6;
-    --white-color: #fdfdfd;
-    --black-color: #353434;
-    --background-input-color: #ececec;
+    --primary-color: hsl(181 100% 19%);
+    --primary-lighter-color: hsl(181 62% 80%);
+    --accent-color: hsl(327 100% 33%);
+    --accent-lighter-color: hsl(335 86% 91%);
+    --white-color: hsl(0 0% 99%);
+    --black-color: hsl(0 1% 21%);
+    --background-input-color: hsl(0, 0%, 93%);
 
     /* Line height */
     --line-height-heading: 1.2;
     --line-height-text: 1.4;
 
     /* Button */
-    --button-size: 10px 45px;
+    --button-size: 10px 25px;
     --border-radius: 5px;
-    --border-none: none;
+    --font-size-button: 0.9rem;
 
     /* Typographie */
-    --font-weight-standard: 500;
+    --font-weight-standard: 400;
     --font-weight-heading: 700;
     --font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
       sans-serif;
-
-    --font-size-button: 0.9rem;
 
     --font-size-s: 1rem;
     --font-size-m: 1.12rem;
@@ -47,9 +49,6 @@ body {
     --font-size-heading-s: 1.5rem;
     --font-size-heading-m: 2rem;
     --font-size-heading-l: 2.5rem;
-
-    --letter-spacing: 2px;
-    --text-uppercase: uppercase;
   }
 
   /* Color classes */
@@ -110,27 +109,59 @@ body {
   .font-size-s {
     font-size: var(--font-size-s);
   }
+}
 
-  .font-size-button {
-    font-size: var(--font-size-button);
+/* Kleurenbolletjes */
+.figure-ad {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  code {
+    height: 100px;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    display: grid;
+    place-content: center;
+  }
+
+  &:nth-of-type(1),
+  &:nth-of-type(3),
+  &:nth-of-type(6) {
+    code {
+      color: white;
+    }
   }
 }
 
 /* ul en evt ol */
-ul {
+.ul_ad {
   list-style-type: none;
-  padding-left: 0;
+  padding: 0;
 
   li {
-    /* display: flex;
-    align-items: center;
-    gap: 5px; */
+    list-style: none;
+    padding-left: 25px;
+    position: relative;
 
-    p {
-      /* font-size: var(--font-size-button); */
-      margin: 0;
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 16px;
+      height: 16px;
+      background-image: url("./assets/check.svg");
+      background-size: contain;
+      background-repeat: no-repeat;
     }
   }
+
+  /* Mogelijke oplossing li, alleen lager krijgen
+    li {
+      list-style-type: "";
+      list-style-image: url(./assets/check.svg);
+    } */
 }
 
 /* Table */
@@ -187,7 +218,14 @@ blockquote {
     gap: 10px;
     font-size: var(--font-size-m);
 
-    span {
+    &::after {
+      content: ' " ';
+      font-size: 200%;
+      font-family: cursive;
+    }
+
+    &::before {
+      content: ' " ';
       font-size: 200%;
       font-family: cursive;
     }
@@ -195,47 +233,124 @@ blockquote {
 }
 
 /* Form label */
+
+.styleguide-form {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
 label {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  font-size: var(--font-size-s);
+  cursor: pointer;
+
+  &:focus {
+    outline: 5px solid red;
+  }
+}
+
+.label-ad {
+  display: grid;
+
+  & span::after {
+    content: "*";
+    color: red;
+    padding-left: 0.3rem;
+  }
+}
+
+/* Zoekbalk */
+.search-ad {
+  display: inline-flex;
+
+  /* Text zoekvak */
+  & input[type="search"] {
+    border: 1px solid var(--primary-color);
+    border-radius: 5px 0 0 5px;
+
+    &:focus {
+      outline: none;
+      border-radius: 0px;
+      border-right: 0;
+      border: 2px solid var(--primary-color);
+    }
+
+    &:active {
+      border-radius: 0px;
+    }
+  }
+
+  /* Zoekknop */
+  & button {
+    padding: 0.5rem;
+    background-color: var(--primary-color);
+    border-radius: 0 5px 5px 0;
+    border: 1px solid var(--primary-color);
+    cursor: pointer;
+
+    &:hover {
+      background-color: var(--primary-lighter-color);
+      /* Zoek-icon tijdens hover */
+      & svg {
+        fill: var(--primary-color);
+      }
+    }
+
+    &:focus {
+      outline: none;
+      background-color: var(--primary-lighter-color);
+      /* Zoekicon tijdens focus */
+      & svg {
+        fill: var(--primary-color);
+      }
+    }
+    &:active {
+      & svg {
+        fill: var(--white-color);
+      }
+    }
+
+    /* Zoek-icon */
+    & svg {
+      width: 1.6rem;
+      fill: var(--white-color);
+    }
+  }
 }
 
 /* Form input & textarea */
 input,
 textarea {
   accent-color: var(--primary-color);
-  border-radius: var(--border-radius);
   font-size: var(--font-size-heading-s);
   background: var(--background-input-color);
-  outline: none;
   font-size: var(--font-size-s);
   padding: 3px 5px;
   border: none;
   border-bottom: 1px solid var(--primary-color);
 
   &:focus {
-    border: 1px solid var(--primary-color);
-    outline: none;
-    border-radius: var(--border-radius);
+    border: 0.5px solid var(--primary-color);
   }
 
   /* Form sumbit button */
   &[type="submit"] {
     padding: var(--button-size);
-    letter-spacing: var(--letter-spacing);
-    text-transform: var(--text-uppercase);
+    letter-spacing: 2px;
+    text-transform: uppercase;
     background-color: var(--accent-color);
-    border: var(--border-none);
+    border: none;
     border-radius: var(--border-radius);
     font-size: var(--font-size-button);
     font-family: var(--font-family);
     color: var(--accent-lighter-color);
     cursor: pointer;
 
+    &:focus {
+      outline-offset: 0.1em;
+    }
+
     &:active {
-      border: 1px solid var(--accent-color);
+      border: 0.5px solid var(--accent-color);
     }
 
     &:hover {
@@ -252,32 +367,31 @@ input[type="range"]::-webkit-slider-thumb {
 }
 
 /* Meer nieuws button */
-button {
-  /* padding: var(--button-size);
-  letter-spacing: var(--letter-spacing);
-  text-transform: var(--text-uppercase);
+.MeerNieuws-ad {
+  padding: var(--button-size);
+  letter-spacing: 2px;
+  text-transform: uppercase;
   background-color: var(--primary-color);
-  border: var(--border-none);
+  border: none;
   border-radius: var(--border-radius);
   font-family: var(--font-family);
   color: var(--primary-lighter-color);
-  display: flex;
-  align-items: center;
   cursor: pointer;
-  gap: 5px; */
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
 
-  border: none;
+  &:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 0.1em;
+  }
 
   &:active {
     border: 1px solid var(--primary-color);
   }
 
-  /* &:hover {
+  &:hover {
     background: var(--primary-lighter-color);
     color: var(--primary-color);
-  } */
-
-  span {
-    transform: translateY(3px);
   }
 }
